@@ -1,20 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import { SafeAreaView, StyleSheet,View, TouchableWithoutFeedback, Text, Image, ScrollView ,LogBox,AppRegistry} from 'react-native';
+import React from 'react';
+import { TamaguiProvider } from '@tamagui/core'
+import 'react-native-gesture-handler';
+import Navigation from './navigation';
+import tamaguiConfig from './tamagui.config'
+export default function App() 
+{
+  LogBox.ignoreAllLogs();
+  console.disableYellowBox = true;
   return (
+   <TamaguiProvider config={tamaguiConfig}>
+
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Navigation />
     </View>
+     </TamaguiProvider> 
   );
 }
-
+console.disableYellowBox = true;
+AppRegistry.registerComponent('main',() => App);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
